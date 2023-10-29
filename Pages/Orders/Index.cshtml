@@ -1,0 +1,38 @@
+﻿@page "/Customers/{id}/Orders"
+@model CustomersApp.Pages.Orders.IndexModel
+@{
+}
+
+<h2 class="text-center mb-4">Orders</h2>
+
+<table class="mx-auto table table-light text-center">
+	<thead>
+		<tr>
+			<th colspan="6">Orders</th>
+		</tr>
+		<tr>
+			<th>Id</th>
+			<th>Product Name</th>
+			<th>Order Quantity</th>
+			<th>Order Date</th>
+			<th>Product Price</th>
+			<th>Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.OrdersReadOnlyDto.Count != 0)
+		{
+			@foreach (var order in Model.OrdersReadOnlyDto)
+			{
+				<tr>
+					<td>@order.OrderID</td>
+					<td>@order.ProductName</td>
+					<td>@order.ProductQty</td>
+					<td>@order.OrderDate</td>
+					<td>@order.Price</td>
+					<td>@order.Cost</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>

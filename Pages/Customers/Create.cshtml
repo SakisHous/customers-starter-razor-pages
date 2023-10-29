@@ -1,0 +1,64 @@
+﻿@page "/Customers/Create"
+@model CustomersApp.Pages.Customers.CreateModel
+@{
+}
+
+<h3>Insert Customer</h3>
+
+<form method="POST">
+	<div class="row mb-3">
+		<label for="username" class="col-md-1">Username</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="username" id="username"
+				   placeholder="Enter Username" value="@Model.CustomerInsertDto.Username" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="password" class="col-md-1">Password</label>
+		<div class="col-md-6">
+			<input type="password" class="form-control" name="password" id="password"
+				   placeholder="Enter Password" value="@Model.CustomerInsertDto.Password" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="firstname" class="col-md-1">Firstname</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="firstname" id="firstname"
+				   placeholder="Enter Firstname" value="@Model.CustomerInsertDto.Firstname" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="lastname" class="col-md-1">Lastname</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="lastname" id="lastname"
+				   placeholder="Enter Lastname" value="@Model.CustomerInsertDto.Lastname" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="email" class="col-md-1">Email</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="email" id="email"
+				   placeholder="Enter Email" value="@Model.CustomerInsertDto.Email" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="offset-md-1 col-md-3 d-grid">
+			<button type="Submit" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="col-md-3 d-grid">
+			<a href="/Customers/Getall" class="btn btn-outline-primary">Cancel</a>
+		</div>
+	</div>
+</form>
+
+<div>
+	@if (Model.ErrorsArray.Count != 0)
+	{
+		@foreach (var error in Model.ErrorsArray)
+		{
+			<div>
+				<p>@error.Message</p>
+			</div>
+		}
+	}
+</div>

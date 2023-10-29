@@ -1,0 +1,52 @@
+﻿@page "/Customers/Getall"
+@model CustomersApp.Pages.Customers.IndexModel
+@{
+}
+
+<h2 class="text-center mb-4">Customers</h2>
+<a class="btn btn-primary btn-lg mb-4" href="/Customers/Create">Insert Customer</a>
+
+<table class="mx-auto table table-light text-center">
+	<thead>
+		<tr>
+			<th colspan="6">Customers</th>
+		</tr>
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.CustomersDto.Count != 0)
+		{
+			@foreach (var customer in Model.CustomersDto)
+			{
+				<tr>
+					<td>@customer.Id</td>
+					<td>@customer.Username</td>
+					<td>@customer.Firstname</td>
+					<td>@customer.Lastname</td>
+					<td>@customer.Email</td>
+					<td>
+						<a class="btn btn-secondary" href="/Customers/@customer.Id/Orders">Orders</a>
+						<a class="btn btn-primary" href="/Customers/@customer.Id/Update">Edit</a>
+						<a class="btn btn-primary" href="javascript:void(0)" onclick="confirmDelete('@customer.Id')">Delete</a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<div>
+	@if (Model.ErrorObj is not null)
+	{
+		<p>@Model.ErrorObj.Message</p>
+	}
+</div>
+
+<script src="~/js/customer.js"></script>

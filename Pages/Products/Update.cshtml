@@ -1,0 +1,58 @@
+﻿@page "/Products/{id}/Update"
+@model CustomersApp.Pages.Products.UpdateModel
+@{
+}
+
+<h3>Update Product</h3>
+
+<form method="POST">
+	<div class="row mb-3">
+		<label for="productName" class="col-md-1">Name</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="name" id="productName"
+				   placeholder="Enter Product Name" value="@Model.ProductUpdateDto.Name" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="description" class="col-md-1">Description</label>
+		<div class="col-md-6">
+			<textarea class="form-control" id="description" rows="3"
+					  name="description">@Model.ProductUpdateDto.Description</textarea>
+		</div>
+
+	</div>
+	<div class="row mb-3">
+		<label for="price" class="col-md-1">Price</label>
+		<div class="col-md-6">
+			<input type="text" class="form-control" name="price" id="price"
+				   placeholder="Enter Price" value="@Model.ProductUpdateDto.Price" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<label for="quantity" class="col-md-1">Quantity</label>
+		<div class="col-md-6">
+			<input type="number" class="form-control" name="quantity" id="quantity"
+				   placeholder="Enter Quantity" value="@Model.ProductUpdateDto.Quantity" />
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="offset-md-1 col-md-3 d-grid">
+			<button type="Submit" class="btn btn-primary">Submit</button>
+		</div>
+		<div class="col-md-3 d-grid">
+			<a href="/Products/Getall" class="btn btn-outline-primary">Cancel</a>
+		</div>
+	</div>
+</form>
+
+<div>
+	@if (Model.ErrorsArray.Count != 0)
+	{
+		@foreach (var error in Model.ErrorsArray)
+		{
+			<div>
+				<p>@error.Message</p>
+			</div>
+		}
+	}
+</div>

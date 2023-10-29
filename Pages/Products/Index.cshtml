@@ -1,0 +1,51 @@
+﻿@page "/Products/Getall"
+@model CustomersApp.Pages.Products.IndexModel
+@{
+}
+
+<h2 class="text-center mb-4">Products</h2>
+<a class="btn btn-primary btn-lg mb-4" href="/Products/Create">Insert Product</a>
+
+<table class="mx-auto table table-light text-center">
+	<thead>
+		<tr>
+			<th colspan="6">Products</th>
+		</tr>
+		<tr>
+			<th>Id</th>
+			<th>Product Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.ProductsReadOnlyDto.Count != 0)
+		{
+			@foreach (var product in Model.ProductsReadOnlyDto)
+			{
+				<tr>
+					<td>@product.Id</td>
+					<td>@product.Name</td>
+					<td>@product.Description</td>
+					<td>@product.Price</td>
+					<td>@product.Quantity</td>
+					<td>
+						<a class="btn btn-primary" href="/Products/@product.Id/Update">Edit</a>
+						<a class="btn btn-primary" href="javascript:void(0)" onclick="confirmDelete('@product.Id')">Delete</a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<div>
+	@if (Model.ErrorObj is not null)
+	{
+		<p>@Model.ErrorObj.Message</p>
+	}
+</div>
+
+<script src="~/js/product.js"></script>
